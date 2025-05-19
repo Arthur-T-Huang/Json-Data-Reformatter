@@ -1,0 +1,55 @@
+Arthur Huang
+
+The following project is a conversion program which
+gathers json data from a provided URL using a GET request,
+converts the data into a specific organized format, and
+sends the newly structured data back to the original link via a POST request.
+This project makes use of okhttp for making the GET and POST requests
+and gson for mapping json into a java class structure.
+
+Design:
+When approaching this challenge, I had very little experience with json or GET/POST requests.
+Naturally, my first instinct was to read up on the two topics, starting with the links provided
+on the notion page. When looking over one of the json pages, I learned that gson has the
+capability of mapping json data onto a java class as long as the structure of the two match.
+I also learned of okhttp which is the library which handles GET and POST requests, and is the code
+used by Postman when making requests. Being more familiar with java, I decided to complete the majority
+of my data reconfiguration in java, by first creating a set of layered classes that matches the setup of the initial json data
+and a second set of classes that matches the structure of the desired json output. The gathered json data would be mapped to a group
+of objects belonging to the first
+set of classes using gson, and then using a series of sorting methods, the data would then be rearranged and organized 
+into a set of objects belonging to the second set of classes. These objects would then be re-converted back to json, resulting
+in an output of the original data reorganized into the desired format.
+
+Challenges: 
+The many challenges I encountered along the way mainly stemmed from okhttp and gson.
+I had first created my project in a java project, and had imported the okhttp and gson as 
+jar libraries. Although this did not sprout any issues when writing my code, I ended up running into
+many errors when trying to run the program, such as missing kotlin or "version out of date" errors.
+As a result, part way through the challenge I decided to switch to a maven project, and though learning how to 
+setup the project was difficult at first, adding gson and okhttp as dependencies proved to be much easier and the 
+program was able to run smoothly. I also ran into the issue that my second set of classes did not match the desired output specifically
+since the desired output had headers such as "companies", the company name, and the role name above their respective categories. As a result, 
+I created another method which mapped each company and role with their header in order to properly match this format.
+Another challenge I had run into was when I initially submitted my result, I kept 
+receiving the error 400 message, saying there was an issue with the reviews in my data. Parsing through the output by hand
+I could not find an issue with the output, until after one trial and error attempt which resulted in the 200 OK message, I 
+realized the reviews had to be sorted by rating highest to lowest. The key lessons and take aways I gathered from tackling these
+challenges is research new concepts such as gson and okhttp more in depth initially, for maybe it would have saved me the struggles
+of trying to configure my project as a java project. Additionally, pay very close attention to the example output, and try to ensure
+the output of your program matches it as exactly as possible.
+
+Additions:
+If I had more time to work on this project, I would attempt to implement more formats that the
+data can be reorganized in. After learning that the reviews needed to be sorted via rating, I created a
+method within my program that sorted the reviews accordingly using a for loop. However, this led me to wonder if the 
+data could be reorganized in other ways using a similar methodology, for example if roles could be organized via average rating, or average pay highest to lowest,
+or if reviews could be sorted by pay instead of rating.
+Furthermore, if this were a project I was working on as a member of Sandbox, I would then implement a drop down menu of the different
+options for how this data can be formated, which would the return the data in that given format. 
+
+Another potential addition which could be implemented in this project would be organizing the data in a graph based on specific parameters.
+For example, creating a graph of roles that are organized based on their average rating or average pay, and when these roles on the graphs are
+clicked, data for the role is displayed, alongside the list of reviews for that given role.
+
+
